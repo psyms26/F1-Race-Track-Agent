@@ -1,0 +1,156 @@
+==========================================================================================
+ DIA F1 — STATISTICAL ANALYSIS OF AGENT COMPARISON
+ Generated:   2026-05-17 15:53:50
+ Source CSV:  results/experiments_20260517_060340.csv
+ N runs:      225
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+ 1. FINISH / DNF SUMMARY
+------------------------------------------------------------------------------------------
+                     N  finished  dnfs  finish_rate
+scenario agent                                     
+DryToWet RL         15        15     0          1.0
+         RuleBased  15        15     0          1.0
+         Utility    15        15     0          1.0
+FullDry  RL         15        15     0          1.0
+         RuleBased  15        15     0          1.0
+         Utility    15        15     0          1.0
+FullWet  RL         15        15     0          1.0
+         RuleBased  15        15     0          1.0
+         Utility    15        15     0          1.0
+Mixed    RL         15        15     0          1.0
+         RuleBased  15        15     0          1.0
+         Utility    15        15     0          1.0
+WetToDry RL         15        15     0          1.0
+         RuleBased  15        15     0          1.0
+         Utility    15        15     0          1.0
+
+------------------------------------------------------------------------------------------
+ 2. DESCRIPTIVE STATISTICS — PRIMARY METRIC: total_time_min
+------------------------------------------------------------------------------------------
+                     N     mean    std      min   median      max
+scenario agent                                                   
+DryToWet RL         15  101.762  2.067   98.848  101.417  104.876
+         RuleBased  15   84.355  1.335   82.423   84.335   86.159
+         Utility    15   83.797  1.448   81.692   83.756   85.955
+FullDry  RL         15   97.215  0.000   97.215   97.215   97.215
+         RuleBased  15   79.175  0.000   79.175   79.175   79.175
+         Utility    15   79.175  0.000   79.175   79.175   79.175
+FullWet  RL         15  106.854  0.000  106.854  106.854  106.854
+         RuleBased  15   85.872  0.000   85.872   85.872   85.872
+         Utility    15   86.077  0.000   86.077   86.077   86.077
+Mixed    RL         15  101.703  1.063  100.369  101.610  103.639
+         RuleBased  15   85.781  0.748   84.821   85.622   87.083
+         Utility    15   84.732  0.795   83.742   84.623   86.104
+WetToDry RL         15  103.172  1.257  101.229  103.334  105.287
+         RuleBased  15   84.421  1.364   82.858   84.122   86.788
+         Utility    15   84.083  1.131   82.759   83.663   86.239
+
+------------------------------------------------------------------------------------------
+ 2.2 DESCRIPTIVE — mean_lap_time_s
+------------------------------------------------------------------------------------------
+                     N     mean    std      min   median      max
+scenario agent                                                   
+DryToWet RL         15  117.417  2.385  114.055  117.020  121.011
+         RuleBased  15   97.332  1.540   95.103   97.310   99.414
+         Utility    15   96.688  1.670   94.260   96.641   99.179
+FullDry  RL         15  112.171  0.000  112.171  112.171  112.171
+         RuleBased  15   91.356  0.000   91.356   91.356   91.356
+         Utility    15   91.356  0.000   91.356   91.356   91.356
+FullWet  RL         15  123.293  0.000  123.293  123.293  123.293
+         RuleBased  15   99.083  0.000   99.083   99.083   99.083
+         Utility    15   99.320  0.000   99.320   99.320   99.320
+Mixed    RL         15  117.349  1.226  115.811  117.243  119.584
+         RuleBased  15   98.979  0.863   97.871   98.794  100.480
+         Utility    15   97.767  0.917   96.625   97.642   99.351
+WetToDry RL         15  119.044  1.451  116.802  119.232  121.485
+         RuleBased  15   97.409  1.574   95.606   97.063  100.140
+         Utility    15   97.019  1.305   95.491   96.535   99.507
+
+------------------------------------------------------------------------------------------
+ 2.3 DESCRIPTIVE — off_track_count
+------------------------------------------------------------------------------------------
+                     N   mean    std  min  median  max
+scenario agent                                        
+DryToWet RL         15  2.400  2.947    0     2.0   10
+         RuleBased  15  0.000  0.000    0     0.0    0
+         Utility    15  0.000  0.000    0     0.0    0
+FullDry  RL         15  0.000  0.000    0     0.0    0
+         RuleBased  15  0.000  0.000    0     0.0    0
+         Utility    15  0.000  0.000    0     0.0    0
+FullWet  RL         15  0.000  0.000    0     0.0    0
+         RuleBased  15  0.000  0.000    0     0.0    0
+         Utility    15  0.000  0.000    0     0.0    0
+Mixed    RL         15  8.267  3.955    4     9.0   16
+         RuleBased  15  0.000  0.000    0     0.0    0
+         Utility    15  0.000  0.000    0     0.0    0
+WetToDry RL         15  1.333  1.759    0     0.0    4
+         RuleBased  15  0.000  0.000    0     0.0    0
+         Utility    15  0.000  0.000    0     0.0    0
+
+------------------------------------------------------------------------------------------
+ 2.4 DESCRIPTIVE — fuel_remaining_kg
+------------------------------------------------------------------------------------------
+                     N   mean    std    min  median    max
+scenario agent                                            
+DryToWet RL         15  2.176  0.020  2.145   2.173  2.210
+         RuleBased  15  1.973  0.009  1.960   1.973  1.984
+         Utility    15  1.951  0.005  1.944   1.952  1.958
+FullDry  RL         15  2.196  0.000  2.196   2.196  2.196
+         RuleBased  15  1.896  0.000  1.896   1.896  1.896
+         Utility    15  1.896  0.000  1.896   1.896  1.896
+FullWet  RL         15  2.017  0.000  2.017   2.017  2.017
+         RuleBased  15  1.887  0.000  1.887   1.887  1.887
+         Utility    15  1.897  0.000  1.897   1.897  1.897
+Mixed    RL         15  2.270  0.022  2.248   2.260  2.302
+         RuleBased  15  2.002  0.013  1.984   2.001  2.024
+         Utility    15  1.990  0.010  1.968   1.994  2.000
+WetToDry RL         15  2.110  0.041  2.067   2.091  2.183
+         RuleBased  15  1.926  0.012  1.903   1.925  1.948
+         Utility    15  1.927  0.011  1.909   1.933  1.942
+
+==========================================================================================
+ 3. PAIRWISE STATISTICAL TESTS — primary metric: total_time_min
+==========================================================================================
+ Valid tests:    14
+ Skipped (zero variance):  1
+ Bonferroni-corrected α:   0.0036  (= 0.05 / 14)
+
+scenario   agent_a   agent_b  n  median_a  median_b  mean_diff p_value  rank_biserial cohens_d  significant_uncorrected  significant_bonferroni
+DryToWet        RL RuleBased 15   101.417    84.335     17.407  0.0007           1.00   10.006                     True                    True
+DryToWet        RL   Utility 15   101.417    83.756     17.965  0.0007           1.00   10.069                     True                    True
+DryToWet RuleBased   Utility 15    84.335    83.756      0.558  0.0007           1.00    0.401                     True                    True
+ FullDry        RL RuleBased 15    97.215    79.175     18.040  0.0001           1.00      n/a                     True                    True
+ FullDry        RL   Utility 15    97.215    79.175     18.040  0.0001           1.00      n/a                     True                    True
+ FullDry RuleBased   Utility 15    79.175    79.175      0.000                   0.00    0.000                    False                   False
+ FullWet        RL RuleBased 15   106.854    85.872     20.982  0.0001           1.00      n/a                     True                    True
+ FullWet        RL   Utility 15   106.854    86.077     20.777  0.0001           1.00      n/a                     True                    True
+ FullWet RuleBased   Utility 15    85.872    86.077     -0.205  0.0001          -1.00      n/a                     True                    True
+   Mixed        RL RuleBased 15   101.610    85.622     15.921  0.0001           1.00   17.326                     True                    True
+   Mixed        RL   Utility 15   101.610    84.623     16.971  0.0001           1.00   18.089                     True                    True
+   Mixed RuleBased   Utility 15    85.622    84.623      1.050  0.0001           1.00    1.360                     True                    True
+WetToDry        RL RuleBased 15   103.334    84.122     18.751  0.0007           1.00   14.292                     True                    True
+WetToDry        RL   Utility 15   103.334    83.663     19.088  0.0007           1.00   15.962                     True                    True
+WetToDry RuleBased   Utility 15    84.122    83.663      0.338  0.0106           0.75    0.269                     True                   False
+
+------------------------------------------------------------------------------------------
+ 4. INTERPRETATION SUMMARY
+------------------------------------------------------------------------------------------
+ ** DryToWet    RL         vs RuleBased  | p=0.0007  |d|=10.01 (large)  |  RuleBased faster by 17.41 min
+ ** DryToWet    RL         vs Utility    | p=0.0007  |d|=10.07 (large)  |  Utility faster by 17.96 min
+ ** DryToWet    RuleBased  vs Utility    | p=0.0007  |d|=0.40 (small)  |  Utility faster by 0.56 min
+ ** FullDry     RL         vs RuleBased  | p=0.0001  |d|=n/a (n/a (zero variance))  |  RuleBased faster by 18.04 min
+ ** FullDry     RL         vs Utility    | p=0.0001  |d|=n/a (n/a (zero variance))  |  Utility faster by 18.04 min
+ ** FullWet     RL         vs RuleBased  | p=0.0001  |d|=n/a (n/a (zero variance))  |  RuleBased faster by 20.98 min
+ ** FullWet     RL         vs Utility    | p=0.0001  |d|=n/a (n/a (zero variance))  |  Utility faster by 20.78 min
+ ** FullWet     RuleBased  vs Utility    | p=0.0001  |d|=n/a (n/a (zero variance))  |  RuleBased faster by 0.20 min
+ ** Mixed       RL         vs RuleBased  | p=0.0001  |d|=17.33 (large)  |  RuleBased faster by 15.92 min
+ ** Mixed       RL         vs Utility    | p=0.0001  |d|=18.09 (large)  |  Utility faster by 16.97 min
+ ** Mixed       RuleBased  vs Utility    | p=0.0001  |d|=1.36 (large)  |  Utility faster by 1.05 min
+ ** WetToDry    RL         vs RuleBased  | p=0.0007  |d|=14.29 (large)  |  RuleBased faster by 18.75 min
+ ** WetToDry    RL         vs Utility    | p=0.0007  |d|=15.96 (large)  |  Utility faster by 19.09 min
+ * WetToDry    RuleBased  vs Utility    | p=0.0106  |d|=0.27 (small)  |  Utility faster by 0.34 min
+
+ ** = significant after Bonferroni correction (α = 0.0036)
+ *  = significant uncorrected (p < 0.05) but not after correction
