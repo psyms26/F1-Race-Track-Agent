@@ -1,51 +1,74 @@
-# F1 Race Track Agent Comparison
-
-**Status:** In Progress / To Be Started Soon
+# F1 Race Strategy: Comparing Agent Architectures
 
 ## Overview
-This project investigates how different intelligent agent architectures perform in optimising race performance under varying track and vehicle conditions. The environment consists of a single fixed F1 race track, which can be implemented using **Unity / Pygame / TORCS / CarRacing-v2 from Gymnasium**. The simulation includes dynamic environmental factors such as dry, wet, and drying track conditions, tyre compounds (Soft, Medium, Hard, Wet), a tyre degradation model, and a simple fuel weight model.
+
+This project compares three different intelligent agent architectures on a simulated Formula 1 race to see how each one handles race strategy under changing weather conditions. The environment is a custom built physics simulator (no external game engine) modelling a single car on a fixed Silverstone style track over 52 laps, with dynamic weather, tyre wear, fuel consumption, and grip all affecting how the car behaves.
+
+The core question is simple: when the strategic decisions matter (when to pit, which tyre to fit, how hard to push), which kind of agent makes the best calls?
 
 ## Research Question
-**How do different agent architectures perform in optimising race time under changing track grip and tyre degradation conditions?**
 
-## Agents
-Three autonomous agents will be compared:
+How do reactive, deliberative, and reinforcement learning agent architectures compare on race performance and robustness across stable and dynamic weather scenarios?
 
-1. **Rule-Based Agent**  
-   - Follows a predefined racing line  
-   - Pits after a fixed number of laps or tyre threshold  
-   - Does not adapt to sudden changes in track conditions
+Three sub-questions follow from this:
 
-2. **Utility-Based Agent**  
-   - Follows a predefined racing line  
-   - Makes dynamic decisions on throttle, speed, and pit timing based on current grip, track conditions, tyre wear, and remaining race distance/laps  
-   - Adapts strategy to sudden weather changes (e.g., rain starting or track drying)
+1. Does a utility-based agent that anticipates weather and reasons about stint length beat a purely reactive rule-based agent when conditions change mid race?
+2. Can a PPO reinforcement learning agent, given the same physics and action space, recover the performance of the hand coded agents without being told the strategy explicitly?
+3. What trade offs in time, fuel margin, and corner precision does each architecture make?
 
-3. **Reinforcement Learning Agent**  
-   - Learns optimal throttle, steering, and pit strategies through trial-and-error interactions  
-   - Can adapt to dynamic track conditions, balancing lap times, tyre efficiency, and track violations
+## The Three Agents
 
-## Performance Metrics
-The agents will be evaluated based on:
+**Rule-Based (reactive):** Follows the racing line with a bang bang throttle controller. Pits on fixed rules (lap 26, or tyre wear above 70%, or a regulatory compound mismatch). Doesn't look ahead or reason about strategy.
 
-- Total race time  
-- Average lap time  
-- Lap time variance  
-- Track violations  
-- Tyre efficiency  
+**Utility-Based (deliberative):** Shares the same driving controller but replaces the pit logic with a four stage utility calculation: regulatory compliance, a three lap weather lookahead, a two compound rule fallback, and a marginal utility test that weighs the time saved by pitting against the pit cost. Compound choice is stint length aware.
 
-## Environment Options
-The race track environment can be implemented in:  
-**Unity / Pygame / TORCS / CarRacing-v2 from Gymnasium**  
+**Reinforcement Learning (PPO):** Learns steering and throttle through trial and error using Proximal Policy Optimization (Stable-Baselines3). Trained with a two phase curriculum (4M steps dry, then 2M steps across all weather). Pit and compound decisions are delegated to a utility style controller, so the RL question is isolated to closed loop driving and resource management.
 
-## Project Goals
-- Compare how different AI architectures handle dynamic race conditions  
-- Analyse the trade-offs between safety, speed, and tyre management  
-- Conduct controlled experiments to evaluate agent effectiveness under different track and weather scenarios  
+## Environment
 
-## Future Work
-- Implement simulation environment and agent behaviours  
-- Train reinforcement learning agent  
-- Run experiments for different track conditions and tyre strategies  
-- Collect and visualise performance metrics  
+A custom simulator written from scratch in Python, organised into modules for track geometry, vehicle physics, tyre wear, fuel, weather scheduling, and the main race loop. It also exposes a Gym compatible interface for training the RL agent. Five weather scenarios are modelled: FullDry, FullWet, DryToWet, WetToDry, and Mixed.
 
+## Experiments
+
+The agents were compared across 225 races (3 agents × 5 weather scenarios × 15 seeds). Every race used a fixed seed so the weather schedule was identical across agents, giving a properly paired design. Results were analysed with Wilcoxon signed rank tests under Bonferroni correction, with effect sizes reported as Cohen's d and rank biserial correlation.
+
+Metrics recorded per race: total race time, mean lap time, off track excursions, fuel remaining at finish, and tyre compounds used.
+
+## Key Findings
+
+- **All 225 races finished** (100% completion rate).
+- The **utility agent significantly beats the rule-based agent in dynamic weather** (largest gap in Mixed, d = 1.36), but the two are tied in stable conditions, strategic reasoning only pays off when conditions actually change.
+- The **RL agent finishes 15-21 minutes slower** but with the largest fuel margin and a perfect finish rate, a textbook Safe RL trade off caused by a fuel management safety clamp that caps its speed.
+- The off track excursions show the RL agent's robustness breaks down in the Mixed scenario, the conditions least similar to its training distribution.
+
+## Running It
+
+```bash
+# create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# install dependencies
+pip install numpy scipy matplotlib pandas seaborn gymnasium stable-baselines3 torch
+
+# train the RL agent (optional, a trained model is already included)
+python -m training.training_ppo
+
+# run all experiments
+python -m experiments.run_experiments
+
+# generate plots and statistics
+python -m analysis.analyse_results
+```
+
+## Project Structure
+
+```
+environment/    track, weather, tyre, fuel, race, gym_env
+agents/         rule_based, utility, rl_agent
+training/       PPO training driver
+experiments/    experimental harness
+analysis/       statistics and plotting
+models/         trained PPO model
+results/        race data (CSV) and plots
+```
